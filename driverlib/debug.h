@@ -40,13 +40,18 @@
 #ifndef __DRIVERLIB_DEBUG_H__
 #define __DRIVERLIB_DEBUG_H__
 
+#ifdef __cplusplus
+extern "C"
+{
+#endif
+
 //*****************************************************************************
 //
 // Prototype for the function that is called when an invalid argument is passed
 // to an API.  This is only used when doing a DEBUG build.
 //
 //*****************************************************************************
-extern void __error__(char *pcFilename, uint32_t ui32Line);
+extern void __error__(const char *pcFilename, uint32_t ui32Line);
 
 //*****************************************************************************
 //
@@ -65,6 +70,10 @@ extern void __error__(char *pcFilename, uint32_t ui32Line);
                      while(0)
 #else
 #define ASSERT(expr)
+#endif
+
+#ifdef __cplusplus
+}
 #endif
 
 #endif // __DRIVERLIB_DEBUG_H__
