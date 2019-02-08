@@ -52,23 +52,23 @@ extern "C"
 extern void ulocaltime(time_t timer, struct tm *tm);
 extern time_t umktime(struct tm *timeptr);
 extern int urand(void);
-extern int usnprintf(char * restrict s, size_t n, const char * restrict format,
+extern int usnprintf(char * __restrict__ s, size_t n, const char * __restrict__ format,
                      ...);
-extern int usprintf(char * restrict s, const char * restrict format, ...);
+extern int usprintf(char * __restrict__ s, const char * __restrict__ format, ...);
 extern void usrand(unsigned int seed);
 extern int ustrcasecmp(const char *s1, const char *s2);
 extern int ustrcmp(const char *s1, const char *s2);
 extern size_t ustrlen(const char *s);
 extern int ustrncasecmp(const char *s1, const char *s2, size_t n);
 extern int ustrncmp(const char *s1, const char *s2, size_t n);
-extern char *ustrncpy(char * restrict s1, const char * restrict s2, size_t n);
+extern char *ustrncpy(char * __restrict__ s1, const char * __restrict__ s2, size_t n);
 extern char *ustrstr(const char *s1, const char *s2);
-extern float ustrtof(const char * restrict nptr,
-                     const char ** restrict endptr);
-extern unsigned long int ustrtoul(const char * restrict nptr,
-                                  const char ** restrict endptr, int base);
-extern int uvsnprintf(char * restrict s, size_t n,
-                      const char * restrict format, va_list arg);
+extern float ustrtof(const char * __restrict__ nptr,
+                     const char ** __restrict__ endptr);
+extern unsigned long int ustrtoul(const char * __restrict__ nptr,
+                                  const char ** __restrict__ endptr, int base);
+extern int uvsnprintf(char * __restrict__ s, size_t n,
+                      const char * __restrict__ format, va_list arg);
 
 //*****************************************************************************
 //
