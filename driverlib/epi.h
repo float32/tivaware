@@ -511,7 +511,7 @@ extern uint8_t EPIWorkaroundByteRead(uint8_t *pui8Addr);
 
 #endif
 
-#if (defined gcc) || (defined ewarm) || (defined sourcerygxx) || \
+#if (defined __GNUC__) || (defined ewarm) || (defined sourcerygxx) || \
     (defined codered)
 //*****************************************************************************
 //

@@ -863,7 +863,7 @@ typedef struct
 }
 #if defined(ccs) ||             \
     defined(codered) ||         \
-    defined(gcc) ||             \
+    defined(__GNUC__) ||        \
     defined(rvmdk) ||           \
     defined(__ARMCC_VERSION) || \
     defined(sourcerygxx)
