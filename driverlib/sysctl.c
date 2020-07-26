@@ -2,7 +2,7 @@
 //
 // sysctl.c - Driver for the system controller.
 //
-// Copyright (c) 2005-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Peripheral Driver Library.
+// This is part of revision 2.2.0.295 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
@@ -2495,8 +2495,8 @@ SysCtlClockFreqSet(uint32_t ui32Config, uint32_t ui32SysClock)
 //! many of which are grouped into sets where only one can be chosen.
 //!
 //! The system clock divider is chosen with one of the following values:
-//! \b SYSCTL_SYSDIV_1, \b SYSCTL_SYSDIV_2, \b SYSCTL_SYSDIV_3, ...
-//! \b SYSCTL_SYSDIV_64.
+//! \b SYSCTL_SYSDIV_1, \b SYSCTL_SYSDIV_2, \b SYSCTL_SYSDIV_2_5,
+//! \b SYSCTL_SYSDIV_3, ... \b SYSCTL_SYSDIV_63_5, \b SYSCTL_SYSDIV_64.
 //!
 //! The use of the PLL is chosen with either \b SYSCTL_USE_PLL or
 //! \b SYSCTL_USE_OSC.
@@ -3522,7 +3522,8 @@ SysCtlVoltageEventClear(uint32_t ui32Status)
 //
 //! Gets the effective VCO frequency.
 //!
-//! \param ui32Crystal holds the crystal value used for the PLL.
+//! \param ui32Crystal holds the crystal value definition from \b sysctl.h
+//! such as \b SYSCTL_XTAL_25MHZ.
 //! \param pui32VCOFrequency is a pointer to the storage location which holds 
 //! value of the VCO computed.
 //!

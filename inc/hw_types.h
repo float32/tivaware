@@ -2,7 +2,7 @@
 //
 // hw_types.h - Common types and macros.
 //
-// Copyright (c) 2005-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Firmware Development Package.
+// This is part of revision 2.2.0.295 of the Tiva Firmware Development Package.
 //
 //*****************************************************************************
 
@@ -110,7 +110,7 @@
 #ifndef REVISION_IS_A1
 #define REVISION_IS_A1                                                     \
         ((HWREG(SYSCTL_DID0) & (SYSCTL_DID0_MAJ_M | SYSCTL_DID0_MIN_M)) == \
-         (SYSCTL_DID0_MAJ_REVA | SYSCTL_DID0_MIN_0))
+         (SYSCTL_DID0_MAJ_REVA | SYSCTL_DID0_MIN_1))
 #endif
 
 #ifndef REVISION_IS_A2

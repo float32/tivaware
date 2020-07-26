@@ -2,7 +2,7 @@
 //
 // timer.h - Prototypes for the timer module
 //
-// Copyright (c) 2005-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Peripheral Driver Library.
+// This is part of revision 2.2.0.295 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
@@ -72,6 +72,7 @@ extern "C"
 #define TIMER_CFG_A_CAP_COUNT_UP 0x00000013  // Timer A event up-counter
 #define TIMER_CFG_A_CAP_TIME     0x00000007  // Timer A event timer
 #define TIMER_CFG_A_CAP_TIME_UP  0x00000017  // Timer A event up-count timer
+#define TIMER_CFG_A_ONE_SHOT_PWM 0x00000009  // Timer A one-shot PWM output
 #define TIMER_CFG_A_PWM          0x0000000A  // Timer A PWM output
 #define TIMER_CFG_B_ONE_SHOT     0x00002100  // Timer B one-shot timer
 #define TIMER_CFG_B_ONE_SHOT_UP  0x00003100  // Timer B one-shot up-count timer
@@ -81,6 +82,7 @@ extern "C"
 #define TIMER_CFG_B_CAP_COUNT_UP 0x00001300  // Timer B event up-counter
 #define TIMER_CFG_B_CAP_TIME     0x00000700  // Timer B event timer
 #define TIMER_CFG_B_CAP_TIME_UP  0x00001700  // Timer B event up-count timer
+#define TIMER_CFG_B_ONE_SHOT_PWM 0x00000900  // Timer B one-shot PWM output
 #define TIMER_CFG_B_PWM          0x00000A00  // Timer B PWM output
 #define TIMER_CFG_A_ACT_TOINTD   0x00010000  // Timer A compare action disable
                                              // time-out interrupt.

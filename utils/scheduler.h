@@ -2,7 +2,7 @@
 //
 // scheduler.h - Public header for the simple timed function scheduler module.
 //
-// Copyright (c) 2010-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2010-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Utility Library.
+// This is part of revision 2.2.0.295 of the Tiva Utility Library.
 //
 //*****************************************************************************
 #ifndef __SCHEDULER_H__
@@ -120,6 +120,7 @@ extern uint32_t g_ui32SchedulerNumTasks;
 //*****************************************************************************
 extern void SchedulerSysTickIntHandler(void);
 extern void SchedulerInit(uint32_t ui32TicksPerSecond);
+extern void SchedulerInitEx(uint32_t ui32TicksPerSecond, uint32_t ui32SysClock);
 extern void SchedulerRun(void);
 extern void SchedulerTaskEnable(uint32_t ui32Index, bool bRunNow);
 extern void SchedulerTaskDisable(uint32_t ui32Index);

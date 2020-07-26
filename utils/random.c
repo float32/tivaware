@@ -4,7 +4,7 @@
 //            environmental noise captured as the seed and a linear congruence
 //            generator for the random numbers.
 //
-// Copyright (c) 2011-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2011-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -20,7 +20,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Utility Library.
+// This is part of revision 2.2.0.295 of the Tiva Utility Library.
 //
 //*****************************************************************************
 
