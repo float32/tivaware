@@ -2,7 +2,7 @@
 //
 // scheduler.c - A simple task scheduler
 //
-// Copyright (c) 2010-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2010-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 // Texas Instruments (TI) is supplying this software for use solely and
@@ -18,7 +18,7 @@
 // CIRCUMSTANCES, BE LIABLE FOR SPECIAL, INCIDENTAL, OR CONSEQUENTIAL
 // DAMAGES, FOR ANY REASON WHATSOEVER.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Utility Library.
+// This is part of revision 2.2.0.295 of the Tiva Utility Library.
 //
 //*****************************************************************************
 
@@ -77,6 +77,9 @@ SchedulerSysTickIntHandler(void)
 //! SchedulerRun().  This call merely configures the SysTick interrupt that is
 //! used by the scheduler to determine what the current system time is.
 //!
+//! Note this function will only work for TM4C123 devices. For TM4C129 devices, 
+//! please refer to the SchedulerInitEx() function. 
+//!
 //! \return None.
 //
 //*****************************************************************************
@@ -89,6 +92,45 @@ SchedulerInit(uint32_t ui32TicksPerSecond)
     // Configure SysTick for a periodic interrupt.
     //
     SysTickPeriodSet(SysCtlClockGet() / ui32TicksPerSecond);
+    SysTickEnable();
+    SysTickIntEnable();
+}
+
+//*****************************************************************************
+//
+//! Initializes the task scheduler.
+//!
+//! \param ui32TicksPerSecond sets the basic frequency of the SysTick interrupt
+//! used by the scheduler to determine when to run the various task functions.
+//!
+//! \param ui32SysClock is the processor clock frequency in Hz.
+//!
+//! This function must be called during application startup to configure the
+//! SysTick timer.  This is used by the scheduler module to determine when each
+//! of the functions provided in the g_psSchedulerTable array is called.
+//!
+//! The caller is responsible for ensuring that SchedulerSysTickIntHandler()
+//! has previously been installed in the SYSTICK vector in the vector table
+//! and must also ensure that interrupts are enabled at the CPU level.
+//!
+//! Note that this call does not start the scheduler calling the configured
+//! functions.  All function calls are made in the context of later calls to
+//! SchedulerRun().  This call merely configures the SysTick interrupt that is
+//! used by the scheduler to determine what the current system time is.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void
+SchedulerInitEx(uint32_t ui32TicksPerSecond, uint32_t ui32SysClock)
+{
+    ASSERT(ui32TicksPerSecond);
+	ASSERT(ui32SysClock);
+
+    //
+    // Configure SysTick for a periodic interrupt.
+    //
+    SysTickPeriodSet(ui32SysClock / ui32TicksPerSecond);
     SysTickEnable();
     SysTickIntEnable();
 }

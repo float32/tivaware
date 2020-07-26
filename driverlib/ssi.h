@@ -2,7 +2,7 @@
 //
 // ssi.h - Prototypes for the Synchronous Serial Interface Driver.
 //
-// Copyright (c) 2005-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Peripheral Driver Library.
+// This is part of revision 2.2.0.295 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
@@ -144,6 +144,8 @@ extern int32_t SSIAdvDataPutFrameEndNonBlocking(uint32_t ui32Base,
                                              uint32_t ui32Data);
 extern void SSIAdvFrameHoldEnable(uint32_t ui32Base);
 extern void SSIAdvFrameHoldDisable(uint32_t ui32Base);
+extern void SSILoopbackEnable(uint32_t ui32Base);
+extern void SSILoopbackDisable(uint32_t ui32Base);
 
 //*****************************************************************************
 //

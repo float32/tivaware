@@ -2,7 +2,7 @@
 //
 // uart.c - Driver for the UART.
 //
-// Copyright (c) 2005-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Peripheral Driver Library.
+// This is part of revision 2.2.0.295 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
@@ -811,7 +811,17 @@ UARTModemControlSet(uint32_t ui32Base, uint32_t ui32Control)
     //
     // Check the arguments.
     //
+#if defined(TARGET_IS_TM4C123_RA1) || defined(TARGET_IS_TM4C123_RA2) || \
+    defined(TARGET_IS_TM4C123_RA3) || defined(TARGET_IS_TM4C123_RB0) || \
+    defined(TARGET_IS_TM4C123_RB1)
     ASSERT(ui32Base == UART1_BASE);
+#else
+    ASSERT((ui32Base == UART0_BASE) ||
+           (ui32Base == UART1_BASE) ||
+           (ui32Base == UART2_BASE) ||
+           (ui32Base == UART3_BASE) ||
+           (ui32Base == UART4_BASE));
+#endif	
     ASSERT((ui32Control & ~(UART_OUTPUT_RTS | UART_OUTPUT_DTR)) == 0);
 
     //
@@ -853,7 +863,17 @@ UARTModemControlClear(uint32_t ui32Base, uint32_t ui32Control)
     //
     // Check the arguments.
     //
+#if defined(TARGET_IS_TM4C123_RA1) || defined(TARGET_IS_TM4C123_RA2) || \
+    defined(TARGET_IS_TM4C123_RA3) || defined(TARGET_IS_TM4C123_RB0) || \
+    defined(TARGET_IS_TM4C123_RB1)
     ASSERT(ui32Base == UART1_BASE);
+#else
+    ASSERT((ui32Base == UART0_BASE) ||
+           (ui32Base == UART1_BASE) ||
+           (ui32Base == UART2_BASE) ||
+           (ui32Base == UART3_BASE) ||
+           (ui32Base == UART4_BASE));
+#endif	
     ASSERT((ui32Control & ~(UART_OUTPUT_RTS | UART_OUTPUT_DTR)) == 0);
 
     //
@@ -889,7 +909,17 @@ UARTModemControlGet(uint32_t ui32Base)
     //
     // Check the arguments.
     //
+#if defined(TARGET_IS_TM4C123_RA1) || defined(TARGET_IS_TM4C123_RA2) || \
+    defined(TARGET_IS_TM4C123_RA3) || defined(TARGET_IS_TM4C123_RB0) || \
+    defined(TARGET_IS_TM4C123_RB1)
     ASSERT(ui32Base == UART1_BASE);
+#else
+    ASSERT((ui32Base == UART0_BASE) ||
+           (ui32Base == UART1_BASE) ||
+           (ui32Base == UART2_BASE) ||
+           (ui32Base == UART3_BASE) ||
+           (ui32Base == UART4_BASE));
+#endif	
 
     return(HWREG(ui32Base + UART_O_CTL) & (UART_OUTPUT_RTS | UART_OUTPUT_DTR));
 }
@@ -919,7 +949,17 @@ UARTModemStatusGet(uint32_t ui32Base)
     //
     // Check the arguments.
     //
+#if defined(TARGET_IS_TM4C123_RA1) || defined(TARGET_IS_TM4C123_RA2) || \
+    defined(TARGET_IS_TM4C123_RA3) || defined(TARGET_IS_TM4C123_RB0) || \
+    defined(TARGET_IS_TM4C123_RB1)
     ASSERT(ui32Base == UART1_BASE);
+#else
+    ASSERT((ui32Base == UART0_BASE) ||
+           (ui32Base == UART1_BASE) ||
+           (ui32Base == UART2_BASE) ||
+           (ui32Base == UART3_BASE) ||
+           (ui32Base == UART4_BASE));
+#endif	
 
     return(HWREG(ui32Base + UART_O_FR) & (UART_INPUT_RI | UART_INPUT_DCD |
                                           UART_INPUT_CTS | UART_INPUT_DSR));

@@ -2,7 +2,7 @@
 //
 // ssi.c - Driver for Synchronous Serial Interface.
 //
-// Copyright (c) 2005-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Peripheral Driver Library.
+// This is part of revision 2.2.0.295 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
@@ -692,10 +692,10 @@ SSIDataGet(uint32_t ui32Base, uint32_t *pui32Data)
 //! \param pui32Data is a pointer to a storage location for data that was
 //! received over the SSI interface.
 //!
-//! This function gets received data from the receive FIFO of the specified SSI
-//! module and places that data into the location specified by the \e ui32Data
-//! parameter.  If there is no data in the FIFO, then this function returns a
-//! zero.
+//! This function gets one received data element from the receive FIFO of the 
+//! specified SSI module and places that data into the location specified by 
+//! the \e ui32Data parameter.  If there is no data in the FIFO, then this 
+//! function returns a zero.
 //!
 //! \note Only the lower N bits of the value written to \e pui32Data contain
 //! valid data, where N is the data width as configured by
@@ -703,7 +703,7 @@ SSIDataGet(uint32_t ui32Base, uint32_t *pui32Data)
 //! 8-bit data width, only the lower 8 bits of the value written to
 //! \e pui32Data contain valid data.
 //!
-//! \return Returns the number of elements read from the SSI receive FIFO.
+//! \return Returns 1 if there is data element read or 0 if no data in FIFO
 //
 //*****************************************************************************
 int32_t
@@ -1013,7 +1013,7 @@ SSIAdvDataPutFrameEnd(uint32_t ui32Base, uint32_t ui32Data)
     // Check the arguments.
     //
     ASSERT(_SSIBaseValid(ui32Base));
-    ASSERT((ui32Data & 0xff) == 0);
+    ASSERT((ui32Data & 0xffffff00) == 0);
 
     //
     // Wait until there is space.
@@ -1058,7 +1058,7 @@ SSIAdvDataPutFrameEndNonBlocking(uint32_t ui32Base, uint32_t ui32Data)
     // Check the arguments.
     //
     ASSERT(_SSIBaseValid(ui32Base));
-    ASSERT((ui32Data & 0xff) == 0);
+    ASSERT((ui32Data & 0xffffff00) == 0);
 
     //
     // Check for space to write.
@@ -1140,6 +1140,61 @@ SSIAdvFrameHoldDisable(uint32_t ui32Base)
     // Clear the hold frame bit.
     //
     HWREG(ui32Base + SSI_O_CR1) &= ~(SSI_CR1_FSSHLDFRM);
+}
+
+//*****************************************************************************
+//
+//! Enables the use of SSI Loopback mode.
+//!
+//! \param ui32Base is the base address of the SSI module.
+//!
+//! This function configures the SSI module to enter loopback mode.  When in
+//! loopback mode, the output of the transmit serial shift register is
+//! connected internally to the input of the receive serial shift register.
+//! This mode is useful for diagnostic/debug testing of the SSI module.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void
+SSILoopbackEnable(uint32_t ui32Base)
+{
+    //
+    // Check the arguments.
+    //
+    ASSERT(_SSIBaseValid(ui32Base));
+	
+	//
+    // Enable Loopback mode
+	//
+    HWREG(ui32Base + SSI_O_CR1) |= 1u;
+}
+
+//*****************************************************************************
+//
+//! Disables the use of SSI Loopback mode.
+//!
+//! \param ui32Base is the base address of the SSI module.
+//!
+//! This function restores the SSI module to be in normal serial port operation
+//! where the the input of the receive serial shift register is no longer
+//! connected internally to the output of the transmit serial shift register.
+//!
+//! \return None.
+//
+//*****************************************************************************
+void
+SSILoopbackDisable(uint32_t ui32Base)
+{
+    //
+    // Check the arguments.
+    //
+    ASSERT(_SSIBaseValid(ui32Base));
+	
+	//
+    // Disable Loopback mode
+	//
+    HWREG(ui32Base + SSI_O_CR1) &= ~(1u);
 }
 
 //*****************************************************************************

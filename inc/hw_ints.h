@@ -3,7 +3,7 @@
 // hw_ints.h - Macros that define the interrupt assignment on Tiva C Series
 // MCUs.
 //
-// Copyright (c) 2005-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -34,7 +34,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Firmware Development Package.
+// This is part of revision 2.2.0.295 of the Tiva Firmware Development Package.
 //
 //*****************************************************************************
 

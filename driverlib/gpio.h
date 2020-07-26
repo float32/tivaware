@@ -2,7 +2,7 @@
 //
 // gpio.h - Defines and Macros for GPIO API.
 //
-// Copyright (c) 2005-2017 Texas Instruments Incorporated.  All rights reserved.
+// Copyright (c) 2005-2020 Texas Instruments Incorporated.  All rights reserved.
 // Software License Agreement
 // 
 //   Redistribution and use in source and binary forms, with or without
@@ -33,7 +33,7 @@
 // (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY OUT OF THE USE
 // OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 // 
-// This is part of revision 2.1.4.178 of the Tiva Peripheral Driver Library.
+// This is part of revision 2.2.0.295 of the Tiva Peripheral Driver Library.
 //
 //*****************************************************************************
 
@@ -191,6 +191,7 @@ extern void GPIODMATriggerEnable(uint32_t ui32Port, uint8_t ui8Pins);
 extern void GPIODMATriggerDisable(uint32_t ui32Port, uint8_t ui8Pins);
 extern void GPIOADCTriggerEnable(uint32_t ui32Port, uint8_t ui8Pins);
 extern void GPIOADCTriggerDisable(uint32_t ui32Port, uint8_t ui8Pins);
+extern void GPIOUnlockPin(uint32_t ui32Port, uint8_t ui8Pins);
 
 //*****************************************************************************
 //
